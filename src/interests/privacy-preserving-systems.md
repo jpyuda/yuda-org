@@ -1,6 +1,6 @@
 ---
 title: "Privacy-Preserving Identity and Data Systems"
-layout: layouts/research-interest.njk
+layout: layouts/interest.njk
 emerging_directions:
   - privacy-preserving-analytics
   - decentralized-identity
