@@ -11,50 +11,51 @@ layout: layouts/base.njk
 
 	<section class="current-work">
 		<h2>Current Work</h2>
-		{% set relatedProjects = collections.projects | getRelatedProjects(page.fileSlug) %}
-		{% if relatedProjects.length > 0 %}
-			<ul>
-			{% for project in relatedProjects %}
-				<li>
-					<a href="{{ project.url }}">{{ project.data.title }}</a>
-					<span class="date">({{ project.date | readableDate }})</span>
-				</li>
-			{% endfor %}
+		{% set foundProjects = false %}
+		{% for project in collections.projects %}
+			{% if project.data.research_interests %}
+				{% for interestSlug in project.data.research_interests %}
+					{% if interestSlug == page.fileSlug %}
+						{% if not foundProjects %}
+							<ul>
+							{% set foundProjects = true %}
+						{% endif %}
+						<li>
+							<a href="{{ project.url }}">{{ project.data.title }}</a>
+							{% if project.date %}
+							<span class="date">({{ project.date | readableDate }})</span>
+							{% endif %}
+						</li>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		{% endfor %}
+		{% if foundProjects %}
 			</ul>
 		{% else %}
 			<p>No current projects in this area.</p>
 		{% endif %}
 	</section>
 
+	{% if emerging_directions %}
 	<section class="emerging-directions">
 		<h2>Emerging Directions</h2>
-		{% if emerging_directions %}
-			<ul>
-			{% for direction in emerging_directions %}
-				{% set emergingItem = collections.emerging | getBySlug(direction) %}
-				{% if emergingItem %}
-					<li><a href="{{ emergingItem.url }}">{{ emergingItem.data.title }}</a></li>
-				{% else %}
-					<li>{{ direction | replace("-", " ") | title }}</li>
-				{% endif %}
-			{% endfor %}
-			</ul>
-		{% endif %}
+		<ul>
+		{% for direction in emerging_directions %}
+			<li>{{ direction | replace("-", " ") | title }}</li>
+		{% endfor %}
+		</ul>
 	</section>
+	{% endif %}
 
+	{% if open_questions %}
 	<section class="open-questions">
 		<h2>Open Questions</h2>
-		{% if open_questions %}
-			<ul>
-			{% for question in open_questions %}
-				{% set questionItem = collections.questions | getBySlug(question) %}
-				{% if questionItem %}
-					<li><a href="{{ questionItem.url }}">{{ questionItem.data.title }}</a></li>
-				{% else %}
-					<li>{{ question | replace("-", " ") | title }}</li>
-				{% endif %}
-			{% endfor %}
-			</ul>
-		{% endif %}
+		<ul>
+		{% for question in open_questions %}
+			<li>{{ question | replace("-", " ") | title }}</li>
+		{% endfor %}
+		</ul>
 	</section>
+	{% endif %}
 </article>
