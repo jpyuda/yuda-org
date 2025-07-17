@@ -16,7 +16,16 @@ layout: layouts/base.njk
 	<section class="connections">
 		<h2>Related Areas</h2>
 		{% if research_interests %}
-			{% set relatedResearch = research_interests | getRelatedResearch(collections.interests) %}
+			{% if research_interests %}
+			  <ul>
+			  {% for interestSlug in research_interests %}
+				{% set interest = collections.interests | getBySlug(interestSlug) %}
+				{% if interest %}
+				  <li><a href="{{ interest.url }}">{{ interest.data.title }}</a></li>
+				{% endif %}
+			  {% endfor %}
+			  </ul>
+			{% endif %}
 			{% if relatedResearch.length > 0 %}
 				<ul>
 				{% for interest in relatedResearch %}
