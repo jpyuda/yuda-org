@@ -3,13 +3,13 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   
   // Collections for different content types
- eleventyConfig.addCollection("researchInterests", function(collection) {
-   return collection.getFilteredByGlob("src/interests/*.md");
- });
+  eleventyConfig.addCollection("interests", function(collection) {
+    return collection.getFilteredByGlob("src/interests/*.md");
+  });
   
   eleventyConfig.addCollection("projects", function(collection) {
     return collection.getFilteredByGlob("src/projects/*.md")
-      .sort((a, b) => b.date - a.date); // Most recent first
+      .sort((a, b) => b.date - a.date);
   });
   
   eleventyConfig.addCollection("emerging", function(collection) {
@@ -59,13 +59,6 @@ module.exports = function(eleventyConfig) {
       day: 'numeric'
     });
   });
-  
-  // Markdown configuration
-  eleventyConfig.setLibrary("md", require("markdown-it")({
-    html: true,
-    linkify: true,
-    typographer: true
-  }));
   
   return {
     dir: {

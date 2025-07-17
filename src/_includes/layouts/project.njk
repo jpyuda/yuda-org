@@ -16,7 +16,7 @@ layout: layouts/base.njk
 	<section class="connections">
 		<h2>Related Areas</h2>
 		{% if research_interests %}
-			{% set relatedResearch = research_interests | getRelatedResearch(collections.researchInterests) %}
+			{% set relatedResearch = research_interests | getRelatedResearch(collections.interests) %}
 			{% if relatedResearch.length > 0 %}
 				<ul>
 				{% for interest in relatedResearch %}
