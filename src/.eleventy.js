@@ -3,9 +3,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets");
   
   // Collections for different content types
-  eleventyConfig.addCollection("researchInterests", function(collection) {
-    return collection.getFilteredByGlob("src/research-interests/*.md");
-  });
+ eleventyConfig.addCollection("researchInterests", function(collection) {
+   return collection.getFilteredByGlob("src/interests/*.md");
+ });
   
   eleventyConfig.addCollection("projects", function(collection) {
     return collection.getFilteredByGlob("src/projects/*.md")
