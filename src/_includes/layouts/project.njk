@@ -6,74 +6,56 @@ layout: layouts/base.njk
 	<h1>{{ title }}</h1>
 	
 	{% if date %}
-		<p class="date">{{ date | readableDate }}</p>
+	<p class="date">{{ date | readableDate }}</p>
 	{% endif %}
 
 	<div class="content">
 		{{ content | safe }}
 	</div>
 
-	<section class="connections">
-		<h2>Related Areas</h2>
-		{% if research_interests %}
-			{% if research_interests %}
-			  <ul>
-			  {% for interestSlug in research_interests %}
-				{% set interest = collections.interests | getBySlug(interestSlug) %}
-				{% if interest %}
-				  <li><a href="{{ interest.url }}">{{ interest.data.title }}</a></li>
+	{% if research_interests %}
+	<section class="related-areas">
+		<h2>Related Areas of Interest</h2>
+		<ul>
+		{% for interestSlug in research_interests %}
+			{% for interest in collections.interests %}
+				{% if interest.fileSlug == interestSlug %}
+				<li><a href="{{ interest.url }}">{{ interest.data.title }}</a></li>
 				{% endif %}
-			  {% endfor %}
-			  </ul>
-			{% endif %}
-			{% if relatedResearch.length > 0 %}
-				<ul>
-				{% for interest in relatedResearch %}
-					<li><a href="{{ interest.url }}">{{ interest.data.title }}</a></li>
-				{% endfor %}
-				</ul>
-			{% endif %}
-		{% endif %}
-	</section>
-
-	{% if impact_areas %}
-		<section class="impact-areas">
-			<h2>Impact Areas</h2>
-			<ul>
-			{% for area in impact_areas %}
-				<li>{{ area | replace("-", " ") | title }}</li>
 			{% endfor %}
-			</ul>
-		</section>
+		{% endfor %}
+		</ul>
+	</section>
 	{% endif %}
 
-	<section class="future-directions">
-		{% if emerging_directions %}
-			<h3>Emerging Directions</h3>
-			<ul>
-			{% for direction in emerging_directions %}
-				{% set emergingItem = collections.emerging | getBySlug(direction) %}
-				{% if emergingItem %}
-					<li><a href="{{ emergingItem.url }}">{{ emergingItem.data.title }}</a></li>
-				{% else %}
-					<li>{{ direction | replace("-", " ") | title }}</li>
-				{% endif %}
-			{% endfor %}
-			</ul>
-		{% endif %}
-
-		{% if open_questions %}
-			<h3>Open Questions</h3>
-			<ul>
-			{% for question in open_questions %}
-				{% set questionItem = collections.questions | getBySlug(question) %}
-				{% if questionItem %}
-					<li><a href="{{ questionItem.url }}">{{ questionItem.data.title }}</a></li>
-				{% else %}
-					<li>{{ question | replace("-", " ") | title }}</li>
-				{% endif %}
-			{% endfor %}
-			</ul>
-		{% endif %}
+	{% if impact_areas %}
+	<section class="impact-areas">
+		<h2>Impact Areas</h2>
+		<ul>
+		{% for area in impact_areas %}
+			<li>{{ area | replace("-", " ") | title }}</li>
+		{% endfor %}
+		</ul>
 	</section>
-</article>
+	{% endif %}
+
+	{% if emerging_directions %}
+	<section class="emerging-directions">
+		<h3>Emerging Directions</h3>
+		<ul>
+		{% for direction in emerging_directions %}
+			<li>{{ direction | replace("-", " ") | title }}</li>
+		{% endfor %}
+		</ul>
+	</section>
+	{% endif %}
+
+	{% if open_questions %}
+	<section class="open-questions">
+		<h3>Open Questions</h3>
+		<ul>
+		{% for question in open_questions %}
+			<li>{{ question | replace("-", " ") | title }}</li>
+		{% endfor %}
+		</ul>
+	<% endif %}
