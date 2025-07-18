@@ -17,7 +17,11 @@ I work at the intersection of technology and public service, focusing on systems
 
 ## Recent Work
 
-- [Vote.gov Language Expansion](/projects/vote-gov-languages/) (2021)
+{% for project in collections.projects %}
+  {% if project.data.slug != "index" %}
+- [{{ project.data.title }}]({{ project.url }})
+  {% endif %}
+{% endfor %}
 
 ## Publications
 

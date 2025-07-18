@@ -20,9 +20,11 @@ open_questions:
   - signaling-vs-usage-metrics
 ---
 
-**Role:** Project lead for Vote.gov modernization in response to Executive Order 14019, coordinating with federal agencies, state and local election officials, and advocacy organizations.
+## Role
 
-Led comprehensive modernization of Vote.gov following March 7, 2021 Executive Order on "Promoting Access to Voting," addressing declining faith in American electoral processes through expanded access to authoritative voting information.
+Project lead (2021-22, 2025) and co-lead (2022-24) for Vote.gov modernization in response to Executive Order 14019, coordinating with federal agencies, state and local election officials, and advocacy organizations.
+
+Led comprehensive modernization of Vote.gov following March 7, 2021 Executive Order on “Promoting Access to Voting,” addressing declining faith in American electoral processes through expanded access to authoritative voting information.
 
 ## Challenge
 
@@ -30,21 +32,21 @@ After the 2020 election, trust in American electoral systems was at historic low
 
 ## Approach
 
-**Language Access Expansion**
-Expanded from 2 languages (English, Spanish) to 20 languages including Arabic, Chinese, Korean, Vietnamese, Native American languages (Navajo, Yup'ik), and others required by the Voting Rights Act. This served communities whose state and local governments often lacked resources for high-quality multilingual information.
+### Language Access Expansion
+Expanded from 2 languages (English, Spanish) to 20 languages including Arabic, Chinese, Korean, Vietnamese, Native American languages (Navajo, Yupʾik), and others required by the Voting Rights Act. This served communities whose state and local governments sometimes lacked resources for high-quality multilingual information.
 
-**Accessibility Innovation**
+### Accessibility Innovation
 Developed first fully accessible National Mail Voter Registration Form completion tool for the seven states requiring mail/in-person registration. The client-side tool creates completed PDFs without data collection, proving accessibility and privacy can coexist.
 
-**Addressing Misconceptions**
+### Addressing Misconceptions
 Created targeted content addressing barriers that prevent registration: disabled Americans assuming polling places are inaccessible, new citizens confused by registration systems, voters experiencing homelessness, post-conviction voting rights, and new voter guidance.
 
-**Privacy-First Architecture**
-Maintained Vote.gov's privacy-preserving design throughout expansion - the form completion tool operates entirely client-side, demonstrating that government services can be effective without surveillance.
+### Privacy-First Architecture
+Maintained Vote.gov’s privacy-preserving design throughout expansion - the form completion tool operates entirely client-side, demonstrating that government services can be effective without surveillance.
 
 ## Stakeholder Management
 
-Coordinated with federal agencies (EAC, DOJ, HHS, FVAP), Domestic Policy Council, and election officials from all 50 states, 5 territories, and DC. Success required buy-in from state and local officials who could prevent implementation.
+Coordinated with multiple federal agencies, the Domestic Policy Council, and election officials from all 50 states, 5 territories, and the District of Columbia. Success required buy-in from state and local officials who could prevent implementation.
 
 ## Impact
 
@@ -56,6 +58,6 @@ Coordinated with federal agencies (EAC, DOJ, HHS, FVAP), Domestic Policy Council
 
 ## Key Insight
 
-Many translations couldn't be justified by ROI metrics - traffic for some languages was predictably low. But the work was "at least as much about signaling to communities that government strives to serve everybody." For Native American and Alaskan Native communities historically mistreated by the U.S. government, language support communicated "we see you, you matter, and we have responsibilities to you."
+Many translations couldn’t be justified by ROI metrics - traffic for some languages was predictably low. But the work was “at least as much about signaling to communities that government strives to serve everybody.” For Native American and Alaskan Native communities historically mistreated by the U.S. government, language support communicated “we see you, you matter, and we have responsibilities to you.”
 
-This project proved that inclusive design isn't just about compliance - it's about demonstrating democratic values through technology choices.
+This project proved that inclusive design isn’t just about compliance - it’s about demonstrating democratic values through technology choices.
