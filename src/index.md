@@ -9,10 +9,11 @@ I work at the intersection of technology and public service, focusing on systems
 
 ## Areas of Interest
 
-- [Privacy-Preserving Identity and Data Systems](/interests/privacy-preserving-systems/)
-- Inclusive Service Design and Accessibility
-- Human-Centered Government Technology  
-- Public Participation and Government Feedback Systems
+{% for interest in collections.interests %}
+  {% if interest.data.slug != "index" %}
+- [{{ interest.data.title }}]({{ interest.url }})
+  {% endif %}
+{% endfor %}
 
 ## Recent Work
 

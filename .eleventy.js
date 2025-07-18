@@ -53,7 +53,14 @@ module.exports = function(eleventyConfig) {
   
   // Date filter for human-readable dates
   eleventyConfig.addFilter("readableDate", function(date) {
-    return new Date(date).toLocaleDateString('en-US', {
+    // If it's already a string, just return it
+    if (typeof date === 'string' && date.includes(',')) {
+      return date;
+    }
+    
+    // Otherwise, try to format it
+    const dateObj = new Date(date);
+    return dateObj.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'

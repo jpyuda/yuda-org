@@ -22,8 +22,10 @@ layout: layouts/base.njk
 						{% endif %}
 						<li>
 							<a href="{{ project.url }}">{{ project.data.title }}</a>
-							{% if project.date %}
-							<span class="date">({{ project.date | readableDate }})</span>
+							{% if project.date_display %}
+								<span class="date">({{ project.project_period }})</span>
+							{% else %}
+								<span class="date">({{ project.date | readableDate }})</span>
 							{% endif %}
 						</li>
 					{% endif %}
