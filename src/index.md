@@ -3,7 +3,7 @@ title: "Home"
 layout: layouts/base.njk
 ---
 
-# Research-Focused Practitioner
+# John Yuda
 
 I work at the intersection of technology and public service, focusing on systems that serve people rather than institutions.
 
