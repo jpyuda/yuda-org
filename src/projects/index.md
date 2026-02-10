@@ -8,7 +8,7 @@ slug: "index"
 
 <!-- My work focuses on four interconnected areas that shape how technology can better serve people and democratic institutions: -->
 
-{% for projects in collections.project %}
+{% for project in collections.projects %}
   {% if project.data.slug != "index" %}
 - [{{ project.data.title }}]({{ project.url }})
   {% endif %}
