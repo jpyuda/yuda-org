@@ -25,4 +25,4 @@ I work at the intersection of technology and public service, focusing on systems
 
 ## Publications
 
-- [Federal Front Door Research Report](https://labs.usa.gov/files/FFD_ResearchReport.pdf) (2016)
+- [Federal Front Door Research Report](/assets/files/FFD_ResearchReport_0316.pdf) (2016)
