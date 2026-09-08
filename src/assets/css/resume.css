@@ -67,7 +67,8 @@ body {
 		[aside-end] minmax(1rem, 1fr)
 		[full-end];
 	padding: 3rem 0;
-	row-gap: 0.25rem;
+	row-gap: 0;
+	align-items: start;
 }
 
 /* Every grid item gets an explicit grid-column — `.resume > *` can't be
@@ -85,6 +86,15 @@ body {
 
 .breakout {
 	grid-column: full;
+}
+
+/* Spans margin+content (not the aside/outer gutters) using the raw line
+   names rather than an implicit area — there's no "employer" area, and
+   this deliberately isn't full-width, so notes can still pop into the
+   aside column independent of where an employer group starts. At narrow
+   widths margin-col is 0, so this collapses to just the content column. */
+.employer-heading {
+	grid-column: margin-start / content-end;
 }
 
 /* Each entry is a semantic grouping, but `display: contents` makes its
@@ -169,11 +179,33 @@ body {
 	border-top: 1px solid var(--color-rule);
 }
 
+.employer-heading {
+	font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+	font-size: 1.15em;
+	font-weight: 600;
+	text-align: left;
+	margin: 2.5rem 0 1rem 0;
+	padding-top: 0.75rem;
+	border-top: 1px solid var(--color-rule);
+}
+
+.employer-dates {
+	font-family: system-ui, sans-serif;
+	font-size: 0.7em;
+	font-weight: 400;
+	color: var(--color-muted);
+	margin-left: 0.75em;
+}
+
 .entry-heading {
 	font-size: 1em;
 	font-weight: 600;
-	margin: 1.5rem 0 0.4rem 0;
-	line-height: 1.4;
+	/* Bottom margin only — a top margin here would push the heading's
+	   text below its bullets' top edge even though align-items: start
+	   means they share the same row. Spacing between entries comes from
+	   this trailing margin instead, matched on .entry-body below. */
+	margin: 0 0 1.5rem 0;
+	line-height: 1.3;
 }
 
 .entry-role,
@@ -193,6 +225,10 @@ body {
 	color: var(--color-muted);
 }
 
+.entry-body {
+	margin: 0 0 1.5rem 0;
+}
+
 .entry-body ul {
 	margin: 0;
 	padding-left: 1.1em;
@@ -210,7 +246,7 @@ body {
 	font-family: system-ui, sans-serif;
 	font-size: 0.75em;
 	color: var(--color-muted);
-	margin: 0.5rem 0 0 0;
+	margin: 0 0 1.5rem 0;
 	padding: 0.5em 0.75em;
 	border-left: 2px solid var(--color-rule);
 }

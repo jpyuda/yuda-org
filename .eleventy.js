@@ -67,7 +67,27 @@ module.exports = function(eleventyConfig) {
       timeZone: 'UTC'
     });
   });
-  
+
+  // Resume dates are stored as "YYYY-MM" strings (or null for "present")
+  // to keep the JSON sortable and unambiguous; these filters control how
+  // they're displayed without touching the stored format. Parsed by hand
+  // rather than via `new Date()` to sidestep timezone-shift bugs (see
+  // readableDate above) — a plain "YYYY-MM" string has no timezone to
+  // begin with, but there's no reason to introduce one.
+  const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+
+  eleventyConfig.addFilter("monthYear", function(value) {
+    if (!value) return "Present";
+    const [year, month] = value.split("-");
+    return `${MONTH_NAMES[parseInt(month, 10) - 1]}, ${year}`;
+  });
+
+  eleventyConfig.addFilter("yearOnly", function(value) {
+    if (!value) return "Present";
+    return value.split("-")[0];
+  });
+
   return {
     dir: {
       input: "src",

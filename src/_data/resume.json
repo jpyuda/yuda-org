@@ -6,52 +6,86 @@
     "site": "yuda.org",
     "phone": "(703) 380-2556"
   },
-  "experience": [
+  "employers": [
     {
-      "role": "Product Lead",
-      "org": "Cloud.gov Pages, TTS, GSA",
-      "start": "2025-08",
-      "end": null,
-      "highlights": [
-        "Leading strategy and development for critical federal government infrastructure — cloud.gov pages allows federal agencies to quickly and efficiently stand up websites that are 508 and security compliant out of the box."
-      ],
-      "note": null,
-      "_todo": "CONFIRM: is this the same work John described as 'data.gov since April'? Resume PDF says Aug 2025 start."
-    },
-    {
-      "role": "Senior Strategist",
-      "org": "Vote.gov, Public Experience Portfolio, TTS, GSA",
-      "start": "2020-03",
-      "end": "2025-07",
-      "highlights": [
-        "Managed relationships with Secretary of State and State Election Director offices in all 50 states and 5 territories, as well as various federal and non-governmental stakeholders.",
-        "Expanded vote.gov language support from 2 to 20 languages.",
-        "Led digitization of the federal voter registration form and worked with federal agencies and states to identify opportunities for voter registration via data sharing."
-      ],
-      "note": "2024 & 2018 Service to the Citizen Award"
-    },
-    {
-      "role": "Senior Strategist, Identity PMO",
-      "org": "TTS, GSA",
-      "start": "2020-03",
-      "end": "2021-03",
-      "highlights": [
-        "Spearheaded project to pilot identity verification of public citizens using only data the government already holds.",
-        "Managed relationships between federal agencies and other stakeholders."
-      ],
-      "note": null
-    },
-    {
-      "role": "Senior Product Design Advisor",
-      "org": "18F, GSA",
+      "name": "Technology Transformation Services, General Services Administration",
       "start": "2014-04",
-      "end": "2016-12",
-      "highlights": [
-        "Led effort to re-imagine USA.gov for the 21st century, identifying opportunities to reduce administrative burden via information sharing between agencies.",
-        "Led myUSCIS modernization effort with USCIS, with a heavy focus on how the public was asked to share information when seeking benefits or immigration status.",
-        "Helped lead establishment of design and product management practices at 18F."
-      ],
-      "note": "2016 Clearmark Award, MyUSCIS"
+      "end": null,
+      "roles": [
+        {
+          "role": "PLACEHOLDER — role/title TBD",
+          "org": "Data.gov",
+          "start": "2026-04",
+          "end": null,
+          "highlights": [
+            "PLACEHOLDER — John is still deciding what this entry should say."
+          ],
+          "note": null
+        },
+        {
+          "role": "Product Lead",
+          "org": "Cloud.gov Pages",
+          "start": "2025-08",
+          "end": "2026-04",
+          "highlights": [
+            "Led strategy and development for critical federal government infrastructure — cloud.gov pages allows federal agencies to quickly and efficiently stand up websites that are 508 and security compliant out of the box."
+          ],
+          "note": null
+        },
+        {
+          "role": "Senior Strategist",
+          "org": "Vote.gov, Public Experience Portfolio",
+          "start": "2020-03",
+          "end": "2025-07",
+          "highlights": [
+            "Managed relationships with Secretary of State and State Election Director offices in all 50 states and 5 territories, as well as various federal and non-governmental stakeholders.",
+            "Expanded vote.gov language support from 2 to 20 languages.",
+            "Led digitization of the federal voter registration form and worked with federal agencies and states to identify opportunities for voter registration via data sharing."
+          ],
+          "note": "2024 & 2018 Service to the Citizen Award"
+        },
+        {
+          "role": "Senior Strategist",
+          "org": "Identity PMO",
+          "start": "2020-03",
+          "end": "2021-03",
+          "highlights": [
+            "Spearheaded project to pilot identity verification of public citizens using only data the government already holds.",
+            "Managed relationships between federal agencies and other stakeholders."
+          ],
+          "note": null
+        },
+        {
+          "role": "Senior Product Design Advisor",
+          "org": "18F",
+          "start": "2014-04",
+          "end": "2016-12",
+          "highlights": [
+            "Led effort to re-imagine USA.gov for the 21st century, identifying opportunities to reduce administrative burden via information sharing between agencies.",
+            "Led myUSCIS modernization effort with USCIS, with a heavy focus on how the public was asked to share information when seeking benefits or immigration status.",
+            "Helped lead establishment of design and product management practices at 18F."
+          ],
+          "note": "2016 Clearmark Award, MyUSCIS"
+        }
+      ]
+    },
+    {
+      "name": "Consumer Financial Protection Bureau",
+      "start": "2010-12",
+      "end": "2014-04",
+      "roles": [
+        {
+          "role": "IT Specialist",
+          "org": null,
+          "start": "2010-12",
+          "end": "2014-04",
+          "highlights": [
+            "Led design and user research on agency priorities including regulatory changes, consumer relationships with debt and the government, and more.",
+            "Led projects modernizing presentation of agency regulations and collection of public comment."
+          ],
+          "note": null
+        }
+      ]
     }
   ],
   "testimonial": {

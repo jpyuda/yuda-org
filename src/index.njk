@@ -15,13 +15,18 @@ layout: layouts/resume.njk
 
 	<h2 class="section-heading">Work Experience</h2>
 
-	{% for job in resume.experience %}
+	{% for employer in resume.employers %}
+	<h3 class="employer-heading">
+		{{ employer.name }}
+		<span class="employer-dates">{{ employer.start | yearOnly }}–{{ employer.end | yearOnly }}</span>
+	</h3>
+	{% for job in employer.roles %}
 	<article class="entry">
-		<h3 class="entry-heading">
+		<h4 class="entry-heading">
 			<span class="entry-role">{{ job.role }}</span>
-			<span class="entry-org">{{ job.org }}</span>
-			<span class="entry-dates">{{ job.start }}–{{ job.end or "Present" }}</span>
-		</h3>
+			{% if job.org %}<span class="entry-org">{{ job.org }}</span>{% endif %}
+			<span class="entry-dates">{{ job.start | monthYear }}–{{ job.end | monthYear }}</span>
+		</h4>
 		<div class="entry-body">
 			<ul>
 				{% for highlight in job.highlights %}
@@ -33,6 +38,7 @@ layout: layouts/resume.njk
 		<p class="entry-note">{{ job.note }}</p>
 		{% endif %}
 	</article>
+	{% endfor %}
 	{% endfor %}
 
 	<blockquote class="pull-quote breakout">
