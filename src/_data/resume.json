@@ -1,0 +1,68 @@
+{
+  "name": "John Yuda",
+  "tagline": "Senior Product Manager & Digital Government Leader",
+  "contact": {
+    "email": "john@yuda.org",
+    "site": "yuda.org",
+    "phone": "(703) 380-2556"
+  },
+  "experience": [
+    {
+      "role": "Product Lead",
+      "org": "Cloud.gov Pages, TTS, GSA",
+      "start": "2025-08",
+      "end": null,
+      "highlights": [
+        "Leading strategy and development for critical federal government infrastructure — cloud.gov pages allows federal agencies to quickly and efficiently stand up websites that are 508 and security compliant out of the box."
+      ],
+      "note": null,
+      "_todo": "CONFIRM: is this the same work John described as 'data.gov since April'? Resume PDF says Aug 2025 start."
+    },
+    {
+      "role": "Senior Strategist",
+      "org": "Vote.gov, Public Experience Portfolio, TTS, GSA",
+      "start": "2020-03",
+      "end": "2025-07",
+      "highlights": [
+        "Managed relationships with Secretary of State and State Election Director offices in all 50 states and 5 territories, as well as various federal and non-governmental stakeholders.",
+        "Expanded vote.gov language support from 2 to 20 languages.",
+        "Led digitization of the federal voter registration form and worked with federal agencies and states to identify opportunities for voter registration via data sharing."
+      ],
+      "note": "2024 & 2018 Service to the Citizen Award"
+    },
+    {
+      "role": "Senior Strategist, Identity PMO",
+      "org": "TTS, GSA",
+      "start": "2020-03",
+      "end": "2021-03",
+      "highlights": [
+        "Spearheaded project to pilot identity verification of public citizens using only data the government already holds.",
+        "Managed relationships between federal agencies and other stakeholders."
+      ],
+      "note": null
+    },
+    {
+      "role": "Senior Product Design Advisor",
+      "org": "18F, GSA",
+      "start": "2014-04",
+      "end": "2016-12",
+      "highlights": [
+        "Led effort to re-imagine USA.gov for the 21st century, identifying opportunities to reduce administrative burden via information sharing between agencies.",
+        "Led myUSCIS modernization effort with USCIS, with a heavy focus on how the public was asked to share information when seeking benefits or immigration status.",
+        "Helped lead establishment of design and product management practices at 18F."
+      ],
+      "note": "2016 Clearmark Award, MyUSCIS"
+    }
+  ],
+  "testimonial": {
+    "quote": "John validated the confidence and trust we placed in him when we gave him 18F's most high-profile and difficult assignment: leading our team at USCIS. That project team has delivered excellence repeatedly, and has planted the seeds of methodological change.",
+    "attribution": "Aaron Snow, former Executive Director, 18F"
+  },
+  "education": [
+    {
+      "school": "Pennsylvania State University",
+      "detail": "B.A., Integrative Arts",
+      "year": "2001"
+    }
+  ]
+}

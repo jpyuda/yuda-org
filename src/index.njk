@@ -1,0 +1,58 @@
+---
+layout: layouts/resume.njk
+---
+<div class="resume">
+
+	<header class="resume-header breakout">
+		<h1>{{ resume.name }}</h1>
+		<p class="tagline">{{ resume.tagline }}</p>
+		<p class="contact">
+			<a href="mailto:{{ resume.contact.email }}">{{ resume.contact.email }}</a>
+			<a href="https://{{ resume.contact.site }}">{{ resume.contact.site }}</a>
+			<span>{{ resume.contact.phone }}</span>
+		</p>
+	</header>
+
+	<h2 class="section-heading">Work Experience</h2>
+
+	{% for job in resume.experience %}
+	<article class="entry">
+		<h3 class="entry-heading">
+			<span class="entry-role">{{ job.role }}</span>
+			<span class="entry-org">{{ job.org }}</span>
+			<span class="entry-dates">{{ job.start }}–{{ job.end or "Present" }}</span>
+		</h3>
+		<div class="entry-body">
+			<ul>
+				{% for highlight in job.highlights %}
+				<li>{{ highlight }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% if job.note %}
+		<p class="entry-note">{{ job.note }}</p>
+		{% endif %}
+	</article>
+	{% endfor %}
+
+	<blockquote class="pull-quote breakout">
+		<div class="pull-quote-inner">
+			<p>&ldquo;{{ resume.testimonial.quote }}&rdquo;</p>
+			<cite>{{ resume.testimonial.attribution }}</cite>
+		</div>
+	</blockquote>
+
+	<h2 class="section-heading">Education</h2>
+
+	{% for school in resume.education %}
+	<article class="entry">
+		<h3 class="entry-heading">
+			<span class="entry-dates">{{ school.year }}</span>
+		</h3>
+		<div class="entry-body">
+			<p>{{ school.school }} — {{ school.detail }}</p>
+		</div>
+	</article>
+	{% endfor %}
+
+</div>
