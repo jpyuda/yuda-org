@@ -3,9 +3,11 @@ layout: layouts/resume.njk
 ---
 <div class="resume">
 
-	<header class="resume-header breakout">
-		<h1>{{ resume.name }}</h1>
-		<p class="tagline">{{ resume.tagline }}</p>
+	<header class="resume-header">
+		<div class="resume-header-main">
+			<h1>{{ resume.name }}</h1>
+			<p class="tagline">{{ resume.tagline }}</p>
+		</div>
 		<p class="contact">
 			<a href="mailto:{{ resume.contact.email }}">{{ resume.contact.email }}</a>
 			<a href="https://{{ resume.contact.site }}">{{ resume.contact.site }}</a>
@@ -13,7 +15,9 @@ layout: layouts/resume.njk
 		</p>
 	</header>
 
-	<h2 class="section-heading">Work Experience</h2>
+	<p class="resume-summary">{{ resume.summary }}</p>
+
+	<h2 class="section-heading section-heading--wide">Work Experience</h2>
 
 	{% for employer in resume.employers %}
 	<h3 class="employer-heading">
@@ -34,31 +38,70 @@ layout: layouts/resume.njk
 				{% endfor %}
 			</ul>
 		</div>
-		{% if job.note %}
-		<p class="entry-note">{{ job.note }}</p>
+		{% if job.awards and job.awards.length %}
+		<ul class="entry-note-list">
+			{% for award in job.awards %}
+			<li>{{ award }}</li>
+			{% endfor %}
+		</ul>
 		{% endif %}
 	</article>
 	{% endfor %}
 	{% endfor %}
 
-	<blockquote class="pull-quote breakout">
-		<div class="pull-quote-inner">
-			<p>&ldquo;{{ resume.testimonial.quote }}&rdquo;</p>
-			<cite>{{ resume.testimonial.attribution }}</cite>
-		</div>
-	</blockquote>
+	<div class="testimonials">
+		{% for testimonial in resume.testimonials %}
+		<blockquote class="pull-quote-inner">
+			<p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
+			<cite>{{ testimonial.attribution }}</cite>
+		</blockquote>
+		{% endfor %}
+	</div>
+
+	<h2 class="section-heading">Previous Experience</h2>
+
+	{% for job in resume.previousExperience %}
+	<div class="prev-entry">
+		<p class="prev-line">
+			<span class="prev-role">{{ job.role }}</span>{% if job.org %}, <span class="prev-org">{{ job.org }}</span>{% endif %}
+			<span class="prev-years">— {{ job.years }}</span>
+		</p>
+		{% if job.awards and job.awards.length %}
+		<ul class="entry-note-list">
+			{% for award in job.awards %}
+			<li>{{ award }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</div>
+	{% endfor %}
+
+	<h2 class="section-heading">Selected Presentations</h2>
+
+	<ul class="list-plain">
+		{% for item in resume.presentations %}
+		<li>{{ item }}</li>
+		{% endfor %}
+	</ul>
+
+	<h2 class="section-heading">Selected Publications</h2>
+
+	<ul class="list-plain">
+		{% for item in resume.publications %}
+		<li>{{ item }}</li>
+		{% endfor %}
+	</ul>
 
 	<h2 class="section-heading">Education</h2>
 
 	{% for school in resume.education %}
-	<article class="entry">
-		<h3 class="entry-heading">
-			<span class="entry-dates">{{ school.year }}</span>
-		</h3>
-		<div class="entry-body">
-			<p>{{ school.school }} — {{ school.detail }}</p>
-		</div>
-	</article>
+	<div class="entry-body">
+		<p>{{ school.school }} — {{ school.detail }} ({{ school.year }})</p>
+	</div>
 	{% endfor %}
+
+	<footer class="resume-footer">
+		<p>{{ resume.name }} &middot; <a href="mailto:{{ resume.contact.email }}">{{ resume.contact.email }}</a> &middot; <a href="https://{{ resume.contact.site }}">{{ resume.contact.site }}</a> &middot; {{ resume.contact.phone }}</p>
+	</footer>
 
 </div>
