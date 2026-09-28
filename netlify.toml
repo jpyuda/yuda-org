@@ -1,0 +1,9 @@
+# Build settings for Netlify. Values here take the place of the build
+# command and publish directory set in the Netlify dashboard, so the
+# repository is the single place to change them.
+[build]
+  command = "npm run build"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "22"

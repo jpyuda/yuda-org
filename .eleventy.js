@@ -1,6 +1,12 @@
 module.exports = function(eleventyConfig) {
   // Copy assets through
   eleventyConfig.addPassthroughCopy("src/assets");
+
+  // Projects and interests pages are unfinished and not linked from the
+  // résumé homepage, so keep them out of the build for now. Remove these
+  // two lines to publish them again.
+  eleventyConfig.ignores.add("src/projects/**");
+  eleventyConfig.ignores.add("src/interests/**");
   
   // Collections for different content types
   eleventyConfig.addCollection("interests", function(collection) {
@@ -63,10 +69,39 @@ module.exports = function(eleventyConfig) {
     return dateObj.toLocaleDateString('en-US', {
       year: 'numeric',
       month: 'long',
-      day: 'numeric'
+      day: 'numeric',
+      timeZone: 'UTC'
     });
   });
-  
+
+  // Resume dates are stored as "YYYY-MM" strings (or null for "present")
+  // to keep the JSON sortable and unambiguous; these filters control how
+  // they're displayed without touching the stored format. Parsed by hand
+  // rather than via `new Date()` to sidestep timezone-shift bugs (see
+  // readableDate above) — a plain "YYYY-MM" string has no timezone to
+  // begin with, but there's no reason to introduce one.
+  const MONTH_NAMES = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+
+  eleventyConfig.addFilter("monthYear", function(value) {
+    if (!value) return "Present";
+    const [year, month] = value.split("-");
+    return `${MONTH_NAMES[parseInt(month, 10) - 1]} ${year}`;
+  });
+
+  // First sentence of a paragraph, for short descriptions such as
+  // og:description. Splits on the first ". " so abbreviations without a
+  // following space (e.g. "U.S.") don't end the sentence early.
+  eleventyConfig.addFilter("firstSentence", function(text) {
+    const end = text.indexOf(". ");
+    return end === -1 ? text : text.slice(0, end + 1);
+  });
+
+  eleventyConfig.addFilter("yearOnly", function(value) {
+    if (!value) return "Present";
+    return value.split("-")[0];
+  });
+
   return {
     dir: {
       input: "src",

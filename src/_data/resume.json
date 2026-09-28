@@ -1,0 +1,185 @@
+{
+  "name": "John Yuda",
+  "tagline": "Senior Product Manager & Digital Government Leader",
+  "summary": "John Yuda is a product manager, design leader, and civic technologist with more than two decades of experience building digital services for the public. He has led government-wide initiatives at GSA, CFPB, and the White House, shaped standards used across the federal government, and helped establish the design and product management practices that define modern civic tech. His work consistently returns to a single question: how do we build government technology that serves the people who need it most, rather than the institutions that administer it?",
+  "contact": {
+    "email": "john@yuda.org",
+    "site": "yuda.org"
+  },
+  "employers": [
+    {
+      "name": "Technology Transformation Services, General Services Administration",
+      "start": "2014-04",
+      "end": null,
+      "roles": [
+        {
+          "role": "Product Manager",
+          "org": "Data.gov",
+          "start": "2026-04",
+          "end": null,
+          "highlights": [
+            "Serving as product manager for data.gov, the federal government's primary open data catalog, during a mandatory transition to the DCAT-US 3.0 metadata standard required by OMB M-25-05.",
+            "Managing stakeholder relationships across OMB, the CDO Council, and federal agency data stewards to coordinate government-wide adoption of DCAT-US 3.0.",
+            "Leading redesign and redevelopment of resources.data.gov to better serve agency practitioners, including migrating from an end-of-life Ruby/Jekyll stack to a modern, maintainable toolchain.",
+            "Using GSA's agentic coding framework to accelerate development work, applying human-in-the-loop governance practices for responsible, auditable AI-assisted coding in a federal context."
+          ]
+        },
+        {
+          "role": "Product Manager",
+          "org": "Cloud.gov Pages",
+          "start": "2025-08",
+          "end": "2026-04",
+          "highlights": [
+            "Served as product manager for the cloud.gov Pages suite, including Pages Publisher (a WYSIWYG CMS replacing a GitHub/markdown-based workflow), a new billing console, and platform-wide security posture.",
+            "Led transition from SAFe PI planning to a custom Shape Up-based process, organizing work into six-week cycles with defined completion criteria.",
+            "Led consolidation of 12 federal council websites, including cio.gov, into a unified councils.gov, validating Pages Publisher's default templates and creating a replicable migration path.",
+            "Developed a responsible AI integration framework across the TTS portfolio, defining reliability and accuracy metrics to govern go/no-go decisions for AI-powered features."
+          ]
+        },
+        {
+          "role": "Product Manager",
+          "org": "Vote.gov, Public Experience Portfolio",
+          "start": "2021-03",
+          "end": "2025-07",
+          "highlights": [
+            "Managed relationships with Secretary of State and State Election Director offices across all 50 states and 5 territories, as well as federal agencies, NGOs, and state, local, tribal, and territorial governments.",
+            "Led modernization of vote.gov pursuant to EO 14019, expanding multilingual support from 2 to 20 languages and significantly expanding content for historically underserved communities.",
+            "Created the first accessible, client-side digital completion tool for the National Mail Voter Registration Form — no data collection, no server dependency.",
+            "Led transition of vote.gov operations to the Election Assistance Commission, including stakeholder coordination and service continuity planning."
+          ],
+          "awards": [
+            "2024 Service to the Citizen Award"
+          ]
+        },
+        {
+          "role": "Product Manager",
+          "org": "Identity PMO",
+          "start": "2020-03",
+          "end": "2021-09",
+          "highlights": [
+            "Spearheaded pilot to verify public citizens' identity using only data the government already holds, replacing reliance on private-sector credit bureau data.",
+            "Led cross-agency stakeholder coordination through organizational transitions and evolving requirements.",
+            "Led efforts to improve equity in digital identity proofing tools, identifying and addressing systematic barriers facing underserved populations."
+          ]
+        },
+        {
+          "role": "Various Roles, including Acting Director",
+          "org": "Public Experience Portfolio",
+          "start": "2016-12",
+          "end": "2020-03",
+          "highlights": [
+            "Led and managed a multidisciplinary team of approximately 30 designers, user researchers, content strategists, developers, and support staff.",
+            "Led discovery research for the Office of American Innovation into the state of federal contact centers, creating new lines of business for GSA and helping establish its Center of Excellence for contact centers.",
+            "Led initiatives to research and pilot an information-sharing system adjacent to federal identity systems like login.gov, reducing the need for the public to resubmit information the government already holds.",
+            "Rebuilt the 2017 budget on the fly to meet unanticipated contractual demands; built the 2018 budget from scratch based on priorities rather than historical spending."
+          ],
+          "awards": [
+            "2018 Service to the Citizen Award"
+          ]
+        },
+        {
+          "role": "Senior Product Design Advisor",
+          "org": "18F",
+          "start": "2014-04",
+          "end": "2016-12",
+          "highlights": [
+            "Managed 18F's engagement with U.S. Citizenship and Immigration Services, negotiating contract agreements while driving process and methodological change with visibility to agency leadership and the White House.",
+            "Led myUSCIS modernization effort — one of President Obama's technology priorities — improving customer experience and reducing call center costs and adjudication time.",
+            "Helped deliver Save Ferris, a public-facing identity and access management solution for USCIS that served as a direct precursor to login.gov.",
+            "Led redesign and rebuild of vote.gov, driving voter registration increases between 2% and 23% in 16 states for the 2016 election through partnerships with Facebook, Google, and others.",
+            "Joined the U.S. Web Design Standards effort, establishing priorities to launch v0.8 on time and on budget; led phase 2 planning."
+          ],
+          "awards": [
+            "2016 Clearmark Award — MyUSCIS website and citizenship and naturalization resources"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Consumer Financial Protection Bureau",
+      "start": "2010-12",
+      "end": "2014-04",
+      "roles": [
+        {
+          "role": "Digital Product Lead",
+          "org": null,
+          "start": "2010-12",
+          "end": "2014-04",
+          "highlights": [
+            "Established a novel-for-government custom design and development team, including hiring 30 Technology & Innovation Fellows.",
+            "Led design on Know Before You Owe, generating 28,000 public comments on CFPB's new Loan Estimate mortgage disclosure form — one of the largest public feedback efforts in the agency's history.",
+            "Led product direction and design for eRegulations, an open-source tool making regulations easier to find, read, and understand; subsequently adopted by EPA, ATF, and FEC.",
+            "Led research and design for the award-winning Paying for College and Owning a Home consumer education products.",
+            "Co-authored the Bureau's open source policy and wrote its accessibility and Section 508 design guidelines."
+          ],
+          "awards": [
+            "2014 Clearmark Grand Prize — Know Before You Owe",
+            "2015 Clearmark Award — Owning a Home",
+            "2013 Core77 Design Award (runner-up) — Paying for College"
+          ]
+        }
+      ]
+    }
+  ],
+  "previousExperience": [
+    {
+      "role": "Senior Developer",
+      "org": "Changing Targets Media",
+      "years": "2009–2010"
+    },
+    {
+      "role": "Senior Consultant",
+      "org": "Lucidea",
+      "years": "2005–2009"
+    },
+    {
+      "role": "Web Assistant",
+      "org": "American Bankruptcy Institute",
+      "years": "2004–2005"
+    },
+    {
+      "role": "Freelance Web Developer",
+      "org": null,
+      "years": "2000–2004",
+      "awards": [
+        "2006 Silver Mouse Award, Congressional Management Foundation — U.S. House Committee on Agriculture website"
+      ]
+    },
+    {
+      "role": "Web Developer",
+      "org": "Omega Financial Corp.",
+      "years": "1998–2001"
+    },
+    {
+      "role": "Webmaster",
+      "org": "Bevilacqua Research Group, Pennsylvania State University",
+      "years": "1997"
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "John validated the confidence and trust we placed in him when we gave him 18F's most high-profile and difficult assignment: leading our team at USCIS. That project team has delivered excellence repeatedly, and has planted the seeds of methodological change, thanks in no small part to John's leadership and ability to navigate a complex agency thicket. His blend of design-thinking skills and practical product and project management acumen is both valuable and rare, and his work and opinions are highly respected by his 18F peers.",
+      "attribution": "Aaron Snow, former Executive Director, 18F"
+    },
+    {
+      "quote": "I thought they were very impressively customer-oriented and flexible. They were able to discuss options in a very flexible way, and tailor the plan to fit whatever our needs were going to be. That kind of conversation shows how superior the 18F model can be to working with contractors.",
+      "attribution": "Mark Schwartz, former CIO, U.S. Citizenship and Immigration Services"
+    }
+  ],
+  "presentations": [
+    "How to Build Privacy into Agile Development — 2015 Federal Privacy Summit",
+    "Closing Keynote: Better Services through Rapid Iterations — Design in Government, January 2015",
+    "Innovation in Large Organizations — Code for America Design Day, January 2014; edUi Conference, September 2014",
+    "Opening Keynote: Collaboration for the Greater Good — 2013 UXPA International Conference; 2013 World Usability Day"
+  ],
+  "publications": [
+    "The Next Chapter of Responsive Design, .net Magazine, April 2012"
+  ],
+  "education": [
+    {
+      "school": "Pennsylvania State University",
+      "detail": "B.A., Integrative Arts",
+      "year": "2001"
+    }
+  ]
+}

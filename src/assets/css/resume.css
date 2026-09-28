@@ -1,0 +1,530 @@
+/*
+ * Résumé layout: one CSS Grid with named column tracks (margin, content,
+ * aside) that widen in two tiers. Narrow screens get a single column;
+ * at 60rem section and entry headings move into the left margin; at
+ * 90rem award notes and contact details move into the right aside.
+ * A print tier at the end reuses the margin layout on paper.
+ */
+
+:root {
+	--measure: 34em;      /* ~66-70 characters per line — placeholder */
+	--margin-col: 0px;    /* real width added at --bp-margin */
+	--aside-col: 0px;     /* real width added at --bp-aside */
+
+	--color-text: #1a1a1a;
+	--color-bg: #fdfdfc;
+	--color-muted: #6b6b6b;
+	--color-rule: #d8d5cf;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-text: #e8e6e1;
+		--color-bg: #16161a;
+		--color-muted: #9a9a9a;
+		--color-rule: #38383e;
+	}
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+	font-size: 18px;
+	line-height: 1.55;
+}
+
+/* --- The grid --- */
+
+/*
+ * No column-gap here on purpose: with five tracks toggling between 0 and
+ * real widths across breakpoints, a blanket column-gap adds up fast (4
+ * gaps at once) and the content track's own width formula has no way to
+ * know about it, so totals silently exceed the container and overflow.
+ * Instead every reserved width is accounted for directly in the content
+ * track's min() — margin-col and aside-col are subtracted right there —
+ * and breathing room next to the margin/aside columns is added as
+ * padding on the items that live in them (see the media queries below).
+ *
+ * Every track boundary carries BOTH the outgoing and incoming line name
+ * (e.g. `[margin-end content-start]`). A bare name like `margin` only
+ * resolves to an implicit area when a matching -start AND -end line both
+ * exist — a single `[margin-start]` with no `[margin-end]` silently fails
+ * to match anything, and `grid-column: margin` falls back to auto-
+ * placement without any visible error.
+ */
+.resume {
+	display: grid;
+	grid-template-columns:
+		[full-start] minmax(1rem, 1fr)
+		[margin-start] var(--margin-col)
+		[margin-end content-start] min(var(--measure), 100% - 2rem - var(--margin-col) - var(--aside-col))
+		[content-end aside-start] var(--aside-col)
+		[aside-end] minmax(1rem, 1fr)
+		[full-end];
+	padding: 3rem 0;
+	row-gap: 0;
+	align-items: start;
+}
+
+/* Every grid item gets an explicit grid-column — `.resume > *` can't be
+   used here because `display: contents` on .entry doesn't change the DOM
+   tree for selector matching, only for grid placement, so a `>` combinator
+   would miss entry-heading/entry-body/entry-note-list entirely. */
+.section-heading,
+.entry-heading,
+.entry-body,
+.entry-note-list,
+.testimonials,
+.list-plain {
+	grid-column: content;
+}
+
+.breakout {
+	grid-column: full;
+}
+
+/* Spans margin+content (not the aside/outer gutters) using the raw line
+   names rather than an implicit area — there's no "employer" area, and
+   this deliberately isn't full-width, so notes can still pop into the
+   aside column independent of where an employer group starts. At narrow
+   widths margin-col is 0, so this collapses to just the content column. */
+.employer-heading,
+.resume-header-main,
+.resume-summary {
+	grid-column: margin-start / content-end;
+}
+
+/* Each entry is a semantic grouping, but `display: contents` makes its
+   children direct grid items of .resume — so a heading can live in the
+   margin column while its body text stays in the content column. */
+.entry,
+.resume-header {
+	display: contents;
+}
+
+/* Declared before the media queries on purpose: the aside tier below
+   re-places .contact, and a base rule of equal specificity that came
+   later in the file would silently win. */
+.contact {
+	grid-column: margin-start / content-end;
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: 1.5em;
+	row-gap: 0.25em;
+	font-family: system-ui, sans-serif;
+	font-size: 0.85em;
+	margin: 0;
+}
+
+.contact a {
+	color: inherit;
+}
+
+/* --- Responsive tiers --- */
+
+@media (min-width: 60rem) {
+	:root {
+		--margin-col: 11rem;
+	}
+
+	.entry-heading {
+		grid-column: margin;
+		text-align: right;
+		padding-right: 2rem;
+	}
+
+	.section-heading {
+		grid-column: margin;
+		text-align: right;
+		padding-right: 2rem;
+	}
+
+	/* Work Experience sits right under the full-width header, where the
+	   narrow margin-column treatment wraps awkwardly. Flowing it across
+	   margin+content — the same span as .employer-heading — gives it
+	   room to sit on one line. Lower-level headings (Previous Experience,
+	   Education) keep the narrower marginalia treatment; only this one
+	   needs the extra room. */
+	.section-heading--wide {
+		grid-column: margin-start / content-end;
+		text-align: left;
+		padding-right: 0;
+	}
+
+	/* When a section heading is immediately followed by content that
+	   doesn't need the margin column (a plain list or an entry body with
+	   no separate heading), grid auto-placement slots that content into
+	   the *same* row as the heading rather than the next one. The two
+	   then need matching top offsets to actually align, since the
+	   heading's own margin/border/padding stack pushes its text down
+	   from the row's top edge while the content sibling starts flush.
+	   .prev-entry is `display: contents`, so it's the DOM sibling of the
+	   heading even though .prev-line is the actual grid participant —
+	   the child combinator reaches through it. */
+	/* Matching the heading's margin, padding, and rule means the two
+	   start at the same height and the rule runs unbroken across both
+	   columns. Each section's content must be ONE grid item (see the
+	   .prev-list note in index.njk): later siblings would land below a
+	   two-line heading's row, leaving a gap after the first item. */
+	.section-heading + .list-plain,
+	.section-heading + .entry-body {
+		margin-top: 2.5rem;
+		padding-top: 0.5rem;
+		border-top: 1px solid var(--color-rule);
+	}
+
+	/* On narrow screens the spacing above each role keeps it apart from
+	   the previous role; here the heading shares a row with its bullets,
+	   so it needs no top margin and more room below. */
+	.entry-heading,
+	.employer-heading + .entry > .entry-heading {
+		margin: 0 0 1.5rem 0;
+	}
+}
+
+@media (min-width: 90rem) {
+	:root {
+		--aside-col: 15rem;
+	}
+
+	.entry-body {
+		padding-right: 1.5rem;
+	}
+
+	.entry-note-list {
+		grid-column: aside;
+		padding-left: 2rem;
+	}
+
+	/* A grid item here would stretch its row and open a gap in the list,
+	   so it is taken out of flow and placed over the aside column. The
+	   list sits in the content column, so 100% is the aside's left edge. */
+	.prev-list > li {
+		position: relative;
+	}
+
+	.prev-note {
+		position: absolute;
+		top: 0;
+		left: 100%;
+		width: var(--aside-col);
+		margin: 0;
+	}
+
+	/* Contact info moves into the aside column once there's room,
+	   letting the header span all three tracks instead of just the
+	   main column. */
+	.resume-header-main {
+		grid-row: 1;
+	}
+
+	.contact {
+		grid-column: aside;
+		grid-row: 1;
+		align-self: end;
+		flex-direction: column;
+		align-items: flex-start;
+		row-gap: 0.4em;
+		/* Bottom-align with the tagline's last line: offset by the
+		   tagline's bottom margin. */
+		margin-bottom: 0.5rem;
+		padding-left: 2rem;
+	}
+}
+
+/* --- Content styling (placeholder) --- */
+
+.resume-header-main h1 {
+	font-size: 2.25em;
+	margin: 0 0 0.15em 0;
+	line-height: 1.1;
+}
+
+.tagline {
+	margin: 0 0 0.5em 0;
+	color: var(--color-muted);
+	font-style: italic;
+}
+
+.resume-summary {
+	margin: 1.5rem 0 0 0;
+	font-size: 1.1em;
+}
+
+.section-heading {
+	font-family: system-ui, sans-serif;
+	font-size: 0.8em;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+	margin: 2.5rem 0 0.75rem 0;
+	padding-top: 0.5rem;
+	border-top: 1px solid var(--color-rule);
+}
+
+.employer-heading {
+	font-family: Georgia, 'Iowan Old Style', 'Palatino Linotype', serif;
+	font-size: 1.15em;
+	font-weight: 600;
+	text-align: left;
+	margin: 2.5rem 0 1rem 0;
+	padding-top: 0.75rem;
+	border-top: 1px solid var(--color-rule);
+}
+
+/* The first employer sits directly under the Work Experience heading,
+   whose rule already marks the break. */
+.section-heading + .employer-heading {
+	margin-top: 0;
+	padding-top: 0;
+	border-top: 0;
+}
+
+.employer-dates {
+	white-space: nowrap;
+	font-family: system-ui, sans-serif;
+	font-size: 0.7em;
+	font-weight: 400;
+	color: var(--color-muted);
+	margin-left: 0.75em;
+}
+
+.entry-heading {
+	font-size: 1em;
+	font-weight: 600;
+	/* Single-column default: space above, little below, so each title
+	   block binds to its own bullets. In the margin tier the heading
+	   shares a row with its bullets and the margins flip (see above) —
+	   a top margin there would push its text below the bullets' top. */
+	margin: 1rem 0 0.5rem 0;
+	line-height: 1.3;
+}
+
+.employer-heading + .entry > .entry-heading {
+	margin-top: 0;
+}
+
+.nowrap {
+	white-space: nowrap;
+}
+
+.entry-role,
+.entry-org,
+.entry-dates {
+	display: block;
+}
+
+.entry-org {
+	font-weight: 400;
+	color: var(--color-muted);
+}
+
+.entry-dates {
+	font-family: system-ui, sans-serif;
+	font-size: 0.8em;
+	color: var(--color-muted);
+}
+
+.entry-body {
+	margin: 0 0 1.5rem 0;
+}
+
+.entry-body ul {
+	margin: 0;
+	padding-left: 1.1em;
+}
+
+.entry-body li {
+	margin-bottom: 0.5em;
+}
+
+.entry-body p {
+	margin: 0;
+}
+
+.entry-note-list {
+	list-style: none;
+	font-family: system-ui, sans-serif;
+	font-size: 0.75em;
+	color: var(--color-muted);
+	margin: 0 0 1.5rem 0;
+	padding: 0.5em 0.75em;
+	border-left: 2px solid var(--color-rule);
+}
+
+.entry-note-list li {
+	margin-bottom: 0.4em;
+}
+
+.entry-note-list li:last-child {
+	margin-bottom: 0;
+}
+
+/* One shared top/bottom rule around all testimonials, rather than each
+   quote getting its own — a border, then a gap, then another border
+   read as an accidental double rule instead of a deliberate block. */
+.testimonials {
+	margin: 2.5rem 0;
+	padding: 1.5rem 0;
+	border-top: 1px solid var(--color-rule);
+	border-bottom: 1px solid var(--color-rule);
+	font-style: italic;
+}
+
+.pull-quote-inner {
+	margin: 0 0 2rem 0;
+}
+
+.pull-quote-inner:last-child {
+	margin-bottom: 0;
+}
+
+.pull-quote-inner p {
+	font-size: 1.15em;
+	margin: 0 0 0.5em 0;
+}
+
+.pull-quote-inner cite {
+	font-family: system-ui, sans-serif;
+	font-style: normal;
+	font-size: 0.8em;
+	color: var(--color-muted);
+}
+
+/* Below the aside tier the note stays in the list, under its line. */
+.prev-note {
+	margin: 0.4em 0 0 0;
+}
+
+.prev-org {
+	color: var(--color-muted);
+}
+
+.prev-years {
+	font-family: system-ui, sans-serif;
+	font-size: 0.85em;
+	color: var(--color-muted);
+}
+
+.list-plain {
+	margin: 0 0 1.5rem 0;
+	padding-left: 1.1em;
+}
+
+.list-plain li {
+	margin-bottom: 0.5em;
+}
+
+.resume-footer {
+	grid-column: full;
+	margin-top: 3rem;
+	padding: 1.5rem 1rem 0 1rem;
+	border-top: 1px solid var(--color-rule);
+	font-family: system-ui, sans-serif;
+	font-size: 0.8em;
+	color: var(--color-muted);
+	text-align: center;
+}
+
+.resume-footer a {
+	color: inherit;
+}
+
+/* --- Print --- */
+
+/* Paper is narrower than the 60rem margin tier, so that tier's heading
+   placement is repeated here with print-sized widths. Notes stay in the
+   content column, and light colors are forced even in dark mode. */
+@media print {
+	@page {
+		margin: 0.6in;
+	}
+
+	:root {
+		--measure: 100%;
+		--margin-col: 9rem;
+		--aside-col: 0px;
+		--color-text: #000;
+		--color-bg: #fff;
+		--color-muted: #555;
+		--color-rule: #bbb;
+	}
+
+	html {
+		font-size: 10pt;
+	}
+
+	body {
+		font-size: 10.5pt;
+		line-height: 1.4;
+	}
+
+	.resume {
+		padding: 0;
+	}
+
+	.entry-heading,
+	.section-heading {
+		grid-column: margin;
+		text-align: right;
+		padding-right: 1.5rem;
+	}
+
+	.section-heading--wide {
+		grid-column: margin-start / content-end;
+		text-align: left;
+		padding-right: 0;
+	}
+
+	.entry-heading,
+	.employer-heading + .entry > .entry-heading {
+		margin: 0 0 1rem 0;
+	}
+
+	.entry-body {
+		margin-bottom: 1rem;
+	}
+
+	.section-heading,
+	.section-heading + .list-plain,
+	.section-heading + .entry-body {
+		margin-top: 1.5rem;
+	}
+
+	.section-heading + .list-plain,
+	.section-heading + .entry-body {
+		padding-top: 0.5rem;
+		border-top: 1px solid var(--color-rule);
+	}
+
+	.testimonials {
+		margin: 1.5rem 0;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	/* The header already carries the contact details. */
+	.resume-footer {
+		display: none;
+	}
+
+	.employer-heading,
+	.section-heading,
+	.entry-heading {
+		break-after: avoid;
+	}
+
+	li,
+	.pull-quote-inner {
+		break-inside: avoid;
+	}
+}

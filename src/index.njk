@@ -1,0 +1,110 @@
+---
+layout: layouts/resume.njk
+---
+<div class="resume">
+
+	<header class="resume-header">
+		<div class="resume-header-main">
+			<h1>{{ resume.name }}</h1>
+			<p class="tagline">{{ resume.tagline }}</p>
+		</div>
+		<p class="contact">
+			<a href="mailto:{{ resume.contact.email }}">{{ resume.contact.email }}</a>
+			<a href="https://{{ resume.contact.site }}">{{ resume.contact.site }}</a>
+		</p>
+	</header>
+
+	<p class="resume-summary">{{ resume.summary }}</p>
+
+	<h2 class="section-heading section-heading--wide">Work Experience</h2>
+
+	{% for employer in resume.employers %}
+	<h3 class="employer-heading">
+		{{ employer.name }}
+		<span class="employer-dates">{{ employer.start | yearOnly }}–{{ employer.end | yearOnly }}</span>
+	</h3>
+	{% for job in employer.roles %}
+	<article class="entry">
+		<h4 class="entry-heading">
+			<span class="entry-role">{{ job.role }}</span>
+			{% if job.org %}<span class="entry-org">{{ job.org }}</span>{% endif %}
+			<span class="entry-dates"><span class="nowrap">{{ job.start | monthYear }}</span>–<span class="nowrap">{{ job.end | monthYear }}</span></span>
+		</h4>
+		<div class="entry-body">
+			<ul>
+				{% for highlight in job.highlights %}
+				<li>{{ highlight }}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% if job.awards and job.awards.length %}
+		<ul class="entry-note-list">
+			{% for award in job.awards %}
+			<li>{{ award }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</article>
+	{% endfor %}
+	{% endfor %}
+
+	<div class="testimonials">
+		{% for testimonial in resume.testimonials %}
+		<blockquote class="pull-quote-inner">
+			<p>&ldquo;{{ testimonial.quote }}&rdquo;</p>
+			<cite>{{ testimonial.attribution }}</cite>
+		</blockquote>
+		{% endfor %}
+	</div>
+
+	<h2 class="section-heading">Previous Experience</h2>
+
+	{# One grid item for the whole list, so the (possibly two-line) margin
+	   heading beside it can't stretch the first row and open a gap. Notes
+	   are positioned into the aside column from inside each item instead
+	   of being separate grid items — see .prev-note in resume.css. #}
+	<ul class="list-plain prev-list">
+		{% for job in resume.previousExperience %}
+		<li>
+			<span class="prev-role">{{ job.role }}</span>{% if job.org %}, <span class="prev-org">{{ job.org }}</span>{% endif %}
+			<span class="prev-years">— {{ job.years }}</span>
+			{% if job.awards and job.awards.length %}
+			<ul class="entry-note-list prev-note">
+				{% for award in job.awards %}
+				<li>{{ award }}</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+
+	<h2 class="section-heading">Selected Presentations</h2>
+
+	<ul class="list-plain">
+		{% for item in resume.presentations %}
+		<li>{{ item }}</li>
+		{% endfor %}
+	</ul>
+
+	<h2 class="section-heading">Selected Publications</h2>
+
+	<ul class="list-plain">
+		{% for item in resume.publications %}
+		<li>{{ item }}</li>
+		{% endfor %}
+	</ul>
+
+	<h2 class="section-heading">Education</h2>
+
+	<div class="entry-body">
+		{% for school in resume.education %}
+		<p>{{ school.school }} — {{ school.detail }} ({{ school.year }})</p>
+		{% endfor %}
+	</div>
+
+	<footer class="resume-footer">
+		<p>{{ resume.name }} &middot; <a href="mailto:{{ resume.contact.email }}">{{ resume.contact.email }}</a> &middot; <a href="https://{{ resume.contact.site }}">{{ resume.contact.site }}</a></p>
+	</footer>
+
+</div>
