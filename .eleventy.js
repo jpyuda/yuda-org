@@ -89,6 +89,14 @@ module.exports = function(eleventyConfig) {
     return `${MONTH_NAMES[parseInt(month, 10) - 1]} ${year}`;
   });
 
+  // First sentence of a paragraph, for short descriptions such as
+  // og:description. Splits on the first ". " so abbreviations without a
+  // following space (e.g. "U.S.") don't end the sentence early.
+  eleventyConfig.addFilter("firstSentence", function(text) {
+    const end = text.indexOf(". ");
+    return end === -1 ? text : text.slice(0, end + 1);
+  });
+
   eleventyConfig.addFilter("yearOnly", function(value) {
     if (!value) return "Present";
     return value.split("-")[0];

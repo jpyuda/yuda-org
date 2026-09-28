@@ -5,6 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{{ resume.name }} — Résumé</title>
 	<meta name="description" content="Résumé for {{ resume.name }}, {{ resume.tagline }}.">
+	<link rel="canonical" href="https://{{ resume.contact.site }}/">
+	<meta property="og:type" content="profile">
+	<meta property="og:title" content="{{ resume.name }} — Résumé">
+	<meta property="og:description" content="{{ resume.summary | firstSentence }}">
+	<meta property="og:url" content="https://{{ resume.contact.site }}/">
+	<meta property="og:site_name" content="{{ resume.name }}">
+	<meta name="twitter:card" content="summary">
 	<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 	<link rel="stylesheet" href="/assets/css/resume.css">
 </head>
