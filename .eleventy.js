@@ -1,6 +1,12 @@
 module.exports = function(eleventyConfig) {
   // Copy assets through
   eleventyConfig.addPassthroughCopy("src/assets");
+
+  // Projects and interests pages are unfinished and not linked from the
+  // résumé homepage, so keep them out of the build for now. Remove these
+  // two lines to publish them again.
+  eleventyConfig.ignores.add("src/projects/**");
+  eleventyConfig.ignores.add("src/interests/**");
   
   // Collections for different content types
   eleventyConfig.addCollection("interests", function(collection) {
@@ -80,7 +86,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("monthYear", function(value) {
     if (!value) return "Present";
     const [year, month] = value.split("-");
-    return `${MONTH_NAMES[parseInt(month, 10) - 1]}, ${year}`;
+    return `${MONTH_NAMES[parseInt(month, 10) - 1]} ${year}`;
   });
 
   eleventyConfig.addFilter("yearOnly", function(value) {

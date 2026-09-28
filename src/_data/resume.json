@@ -4,8 +4,7 @@
   "summary": "John Yuda is a product manager, design leader, and civic technologist with more than two decades of experience building digital services for the public. He has led government-wide initiatives at GSA, CFPB, and the White House, shaped standards used across the federal government, and helped establish the design and product management practices that define modern civic tech. His work consistently returns to a single question: how do we build government technology that serves the people who need it most, rather than the institutions that administer it?",
   "contact": {
     "email": "john@yuda.org",
-    "site": "yuda.org",
-    "phone": "(703) 380-2556"
+    "site": "yuda.org"
   },
   "employers": [
     {
@@ -49,8 +48,7 @@
             "Led transition of vote.gov operations to the Election Assistance Commission, including stakeholder coordination and service continuity planning."
           ],
           "awards": [
-            "2024 Service to the Citizen Award",
-            "2018 Service to the Citizen Award"
+            "2024 Service to the Citizen Award"
           ]
         },
         {
@@ -74,6 +72,9 @@
             "Led discovery research for the Office of American Innovation into the state of federal contact centers, creating new lines of business for GSA and helping establish its Center of Excellence for contact centers.",
             "Led initiatives to research and pilot an information-sharing system adjacent to federal identity systems like login.gov, reducing the need for the public to resubmit information the government already holds.",
             "Rebuilt the 2017 budget on the fly to meet unanticipated contractual demands; built the 2018 budget from scratch based on priorities rather than historical spending."
+          ],
+          "awards": [
+            "2018 Service to the Citizen Award"
           ]
         },
         {
